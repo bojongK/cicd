@@ -4,7 +4,7 @@
   - name: cleanup docker container and image
     block:
     - name: remove container
-      command: docker rm -f $(docker ps -aq)
+      command: docker rm -f "$(docker ps -aq)"
     - name: remove image
       command: docker image rm java-hello-world
     ignore_errors: true

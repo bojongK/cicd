@@ -1,0 +1,14 @@
+---
+- hosts: docker_host
+  tasks:
+  - name: stop and remove image and container
+    block:
+    - name: stop container
+      command: docker stop hello-world-container
+    - name: remove container 
+      command: docker rm hello-world-contianer
+    - name: remove image
+      command: docker image rm zoome95/java-hello-world
+    ignore_errors: true
+  - name:
+    command: docker run -d --name hello-world-container -p 8080:8080 zoome95/java-hello-world

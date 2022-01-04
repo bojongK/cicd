@@ -1,0 +1,14 @@
+---
+- hosts: ansible_host
+  tasks:
+  - name: build docker image with war file
+    command: docker build -t zoome95/java-hello-world .
+    args:
+      chdir: /home/vagrant/hello-world
+#  - name: docker hub login
+#    command: login -u <ID> -p <PW>
+  - name: push docker image to docker hub
+    command: docker image push zoome95/java-hello-world
+  - name: remove docker image from local repository
+    command: docker image rm zoome95/java-hello-world
+    ignore_errors: true
