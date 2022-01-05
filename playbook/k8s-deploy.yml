@@ -1,0 +1,9 @@
+---
+- hosts: k8s_cluster
+  tasks:
+  - name: create service resource
+    command: kubectl apply -f ~/manifest/service.yml
+  - name: create deployment resource
+    command: kubectl apply -f ~/manifest/deployment.yml
+  - name: update deployment resource
+    command: kubectl rollout restart deployment hello-world-deployment
