@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        git url: "https://$GIT_URL", branch: "master", credentialsId: "$GIT_CREDENTIALS_ID"
+                        git url: "https://$GIT_URL", branch: "main", credentialsId: "$GIT_CREDENTIALS_ID"
                         sh "sudo rm -rf ./.git"
                         env.cloneResult=true
                     } catch (error) {
@@ -110,7 +110,7 @@ EOF"""
             steps {
                 script{
                     try {
-                        git url: "https://$GIT_URL-yaml", branch: "master", credentialsId: "$GIT_CREDENTIALS_ID"
+                        git url: "https://$GIT_URL-yaml", branch: "main", credentialsId: "$GIT_CREDENTIALS_ID"
                         sh "rm -rf /var/lib/jenkins/workspace/${env.JOB_NAME}/*"
                         sh """
                         mkdir yaml
